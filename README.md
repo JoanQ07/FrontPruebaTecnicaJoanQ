@@ -9,3 +9,5 @@ El funcionamiento del tablero funciona de la siguiente manera:
 Al cargar un jugador por su nombre se valida haciendo una peticion a la API cuando el cliente deje de escribir en el campo.
 
 Al guardar el juego la API se encargar de validar si el usuario existe o no, en caso de no exitir lo crea, caso contrario lo actualiza.
+
+Al momnento de apostar la ruleta consulta la API para obtener el resultado lo cual despues de obtenerlo lo deja visualizar por 4seg
