@@ -12,6 +12,7 @@ export const useFetch = async ({ ruta, method = "get", data, params }) => {
     result = response.data.data;
   } catch (error) {
     error = error;
+    throw error
   }
 
   return { result, error, message };
