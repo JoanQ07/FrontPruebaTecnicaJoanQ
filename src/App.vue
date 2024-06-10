@@ -73,7 +73,7 @@
         <Button
           class="rounded border text-slate-900 w-full"
           label="Cargar usuario"
-          @click="() => (guardarDatos = false)"
+          @click="nuevoUsuario"
           v-if="guardarDatos"
         />
       </div>
@@ -208,6 +208,8 @@ const cargarUsuario = async () => {
       datosUser.value.nombre = result.nombre;
       datosUser.value.saldo = result.saldo;
     }
+    datosUser.value.montoApostar = 0;
+    tablero.seleccion = [];
   } catch (error) {
     console.error(error);
   }
@@ -226,5 +228,10 @@ const guardarJuego = async () => {
   } catch (error) {
     console.error(error);
   }
+};
+
+const nuevoUsuario = () => {
+  guardarDatos.value = false;
+  setTimeout(() => nombre.value.focus(), 300);
 };
 </script>

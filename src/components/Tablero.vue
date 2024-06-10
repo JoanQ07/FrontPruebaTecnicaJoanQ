@@ -60,7 +60,7 @@ const toggleSeleccion = (valor) => {
     tablero.seleccion = tablero.seleccion.filter((item) => item !== valor);
   } else {
     if (!isNaN(tablero.seleccion[0])) return;
-    else if (tipo.includes(tablero?.seleccion[0]) && !colores.includes(valor)) return;
+    else if (tipo.includes(tablero?.seleccion[0]) && (!colores.includes(valor) || tablero?.seleccion[1] != undefined)) return;
     else if (colores.includes(tablero?.seleccion[0])) return;
 
     tablero.seleccion.push(valor);
