@@ -59,7 +59,7 @@
         />
         <Button
           class="bg-black text-white border rounded w-full"
-          :disabled="ruleta.start"
+          :isDisabled="ruleta.start"
           @click="iniciarApuesta"
           v-if="guardarDatos"
           label="Apostar"
@@ -116,7 +116,7 @@ watch(
   () => datosUser.value.nombre,
   () => {
     validarJugadorTimeOut && clearTimeout(validarJugadorTimeOut);
-    validarJugadorTimeOut = setTimeout(() => cargarUsuario(), 1000);
+    validarJugadorTimeOut = setTimeout(() => cargarUsuario(), 500);
   }
 );
 
@@ -204,10 +204,12 @@ const cargarUsuario = async () => {
     const { result } = await useFetch({
       ruta: `usuarios?nombre=${datosUser.value.nombre}`,
     });
+
     if (result) {
       datosUser.value.nombre = result.nombre;
-      datosUser.value.saldo = result.saldo;
     }
+
+    datosUser.value.saldo = result?.saldo ?? 0;
     datosUser.value.montoApostar = 0;
     tablero.seleccion = [];
   } catch (error) {
